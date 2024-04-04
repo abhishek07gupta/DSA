@@ -22,9 +22,99 @@ public:
         // Write you code here.
     }
 
-    // Implement the function to delete an element.
-    void deleteElement(int ind) {
+// Implement the function to delete root element
+    void deleteElement() {
         // Write you code here.
+        int el = arr[1];
+        if(size ==0 ){
+            cout<<'nothing to delete';
+            return ;
+        }
+        // replacing that node with last node and removing the last node to delete the  required element
+        int pos = 0 ;
+        // first find that el
+        for(int i =1 ; i <=size-2 ; i++){
+            if(arr[i]==el){
+                pos=i;
+                break;
+            }
+        }
+        if(pos==0){
+            cout<<"element not found in the heap"<<endl;
+            return ;
+        }
+
+        arr[pos]=arr[size];
+        size--;
+
+        while(pos<size){
+            int leftsize = pos*2;
+            int rightsize = pos*2+1;
+            if(leftsize < size && arr[leftsize]>arr[pos] && arr[leftsize]>arr[rightsize]){
+                // swap left child with parent
+                int temp = arr[leftsize];
+                arr[leftsize]=arr[pos];
+                arr[pos]=temp;
+                pos=leftsize;
+            }else if(rightsize<size && arr[rightsize]>arr[pos] && arr[rightsize]>arr[leftsize]){
+                // swap right child with parent
+                int temp = arr[rightsize];
+                arr[rightsize]=arr[pos];
+                arr[pos]=temp;
+                pos=rightsize;
+            }else{
+                // both sides good
+                return;
+            }
+        }
+
+    }
+
+//delete function for specific element; 
+    void deleteElement(int el) {
+        // Write you code here.
+        if(size ==0 ){
+            cout<<'nothing to delete';
+            return ;
+        }
+        // replacing that node with last node and removing the last node to delete the  required element
+        int pos = 0 ;
+        // first find that el
+        for(int i =1 ; i <=size-2 ; i++){
+            if(arr[i]==el){
+                pos=i;
+                break;
+            }
+        }
+        if(pos==0){
+            cout<<"element not found in the heap"<<endl;
+            return ;
+        }
+
+        arr[pos]=arr[size];
+        size--;
+
+        while(pos<size){
+            int leftsize = pos*2;
+            int rightsize = pos*2+1;
+            if(leftsize < size && arr[leftsize]>arr[pos] && arr[leftsize]>arr[rightsize]){
+                // swap left child with parent
+                int temp = arr[leftsize];
+                arr[leftsize]=arr[pos];
+                arr[pos]=temp;
+                pos=leftsize;
+            }else if(rightsize<size && arr[rightsize]>arr[pos] && arr[rightsize]>arr[leftsize]){
+                // swap right child with parent
+                int temp = arr[rightsize];
+                arr[rightsize]=arr[pos];
+                arr[pos]=temp;
+                pos=rightsize;
+            }else{
+                // both sides good
+                return;
+            }
+        }
+
     }
 
     // Implement the function to insert 'val' in the heap.
@@ -65,9 +155,19 @@ int main(){
     maxHeap mheap;
     mheap.insert(50);
     mheap.insert(55);
-    mheap.insert(23);
-    mheap.insert(49);
     mheap.insert(53);
+    mheap.insert(52);
+    mheap.insert(54);
+
+    mheap.print();
+
+    cout<<endl;
+
+    int delel;
+    cout<<"enter the element to delete"<<endl;
+    cin>>delel;
+
+    mheap.deleteElement(delel);
 
     mheap.print();
 

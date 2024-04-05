@@ -18,9 +18,6 @@ public:
     }
 
     // Implement the function to remove minimum element.
-    int extractMinElement() {
-        // Write you code here.
-    }
 
 // --------------------------------------------------------------------------------------------------------
 
@@ -29,7 +26,7 @@ public:
         // Write you code here.
         int el = arr[1];
         if(size ==0 ){
-            cout<<'nothing to delete';
+            cout<<"nothing to delete";
             return ;
         }
         // replacing that node with last node and removing the last node to delete the  required element
@@ -76,7 +73,7 @@ public:
     void deleteElement(int el) {
         // Write you code here.
         if(size ==0 ){
-            cout<<'nothing to delete';
+            cout<<"nothing to delete";
             return ;
         }
         // replacing that node with last node and removing the last node to delete the  required element
@@ -155,6 +152,10 @@ public:
         }
     }
 };
+
+// ------------------------------------------------------------------------------------------------------------
+
+// heapify
 
 void heapify(int arr[],int n , int i ){
     int largest = i ;

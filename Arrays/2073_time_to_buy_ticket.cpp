@@ -2,6 +2,8 @@
 #include<vector>
 using namespace std;
 
+
+// Approach 1 : brute force -> O(n*m)
 class Solution {
 public:
     int timeRequiredToBuy(vector<int>& tickets, int k) {
@@ -14,6 +16,23 @@ public:
                 tickets[i%(tickets.size())]--;
             }
             i++;
+        }
+        return count;
+    }
+};
+
+// Approach 2 : Optimal -> O(n);
+
+class Solution {
+public:
+    int timeRequiredToBuy(vector<int>& ticket, int k) {
+        int count=0;
+        for(int i =0 ; i < ticket.size() ; i ++){
+            if(i <= k ){
+                count += min(ticket[i],ticket[k]);
+            }else{
+                count += min(ticket[k]-1,ticket[i]);
+            }
         }
         return count;
     }
